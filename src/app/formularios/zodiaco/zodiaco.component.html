@@ -1,1 +1,67 @@
-<p>zodiaco works!</p>
+<div class="max-w-md mx-auto p-4 border border-gray-300 rounded-lg shadow-lg bg-white">
+  <form [formGroup]="datosForm" (ngSubmit)="calcularEdadYSigno()" class="space-y-4">
+    <h2 class="text-lg font-bold mb-4 text-center">Signo Zodiacal</h2>
+
+    <div class="mb-4">
+      <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+      <input type="text" id="nombre" formControlName="nombre"
+        class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nombre" />
+    </div>
+
+    <div class="mb-4">
+      <label for="apellidoPaterno" class="block text-sm font-medium text-gray-700">Apellido Paterno</label>
+      <input type="text" id="apellidoPaterno" formControlName="apellidoPaterno"
+        class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Apellido Paterno" />
+    </div>
+
+    <div class="mb-4">
+      <label for="apellidoMaterno" class="block text-sm font-medium text-gray-700">Apellido Materno</label>
+      <input type="text" id="apellidoMaterno" formControlName="apellidoMaterno"
+        class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Apellido Materno" />
+    </div>
+
+    <h3 class="text-md font-semibold mb-2">Fecha de Nacimiento</h3>
+    <div class="grid grid-cols-3 gap-4 mb-4">
+      <div>
+        <label for="dia" class="block text-sm font-medium text-gray-700">Día</label>
+        <input type="text" id="dia" formControlName="dia"
+          class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Día" />
+      </div>
+      <div>
+        <label for="mes" class="block text-sm font-medium text-gray-700">Mes</label>
+        <input type="text" id="mes" formControlName="mes"
+          class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Mes" />
+      </div>
+      <div>
+        <label for="año" class="block text-sm font-medium text-gray-700">Año</label>
+        <input type="text" id="año" formControlName="año"
+          class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Año" />
+      </div>
+    </div>
+
+    <h3 class="text-md font-semibold mb-2">Sexo</h3>
+    <div class="mb-4">
+      <label class="inline-flex items-center">
+        <input type="radio" formControlName="sexo" value="Masculino"
+          class="form-radio text-blue-600 border-gray-300 focus:ring-blue-500" />
+        <span class="ml-2">Masculino</span>
+      </label>
+      <label class="inline-flex items-center ml-4">
+        <input type="radio" formControlName="sexo" value="Femenino"
+          class="form-radio text-blue-600 border-gray-300 focus:ring-blue-500" />
+        <span class="ml-2">Femenino</span>
+      </label>
+    </div>
+
+    <button type="submit"
+      class="w-full bg-blue-600 text-white p-2 rounded-md shadow-md hover:bg-blue-700 transition duration-200">Imprimir</button>
+  </form>
+
+  <div *ngIf="nombreCompleto && edad && signoZodiacal" class="mt-6 p-4 border border-gray-300 rounded-lg bg-gray-100">
+    <h2 class="text-lg font-bold">Resultados</h2>
+    <p class="text-md">Nombre Completo: <span class="font-semibold">{{ nombreCompleto }}</span></p>
+    <p class="text-md">Edad: <span class="font-semibold">{{ edad }}</span></p>
+    <p class="text-md">Signo Zodiacal: <span class="font-semibold">{{ signoZodiacal }}</span></p>
+    <img [src]="urlImagenSigno" alt="{{ signoZodiacal }}" *ngIf="urlImagenSigno" class="mt-2 rounded-md shadow-md">
+  </div>
+</div>
