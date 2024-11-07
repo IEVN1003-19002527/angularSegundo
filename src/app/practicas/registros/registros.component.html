@@ -1,7 +1,6 @@
 <div class="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-  <!-- Título principal del formulario de registro de empleados -->
   <h1 class="text-4xl font-bold mb-6 text-center text-gray-800">Registro de Empleados</h1>
-  <!-- Formulario para registrar un nuevo empleado -->
+ 
   <form [formGroup]="registroForm" (ngSubmit)="registrarEmpleado()" class="bg-white shadow-md rounded-lg p-8 mb-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Campo para ingresar la matrícula del empleado -->
@@ -9,54 +8,43 @@
         <label for="matricula" class="block mb-2 text-sm font-bold text-gray-700">Matrícula</label>
         <input formControlName="matricula" type="number" id="matricula" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
       </div>
-      <!-- Campo para ingresar el nombre del empleado -->
       <div>
         <label for="nombre" class="block mb-2 text-sm font-bold text-gray-700">Nombre</label>
         <input formControlName="nombre" type="text" id="nombre" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
       </div>
-      <!-- Campo para ingresar el correo del empleado -->
       <div>
         <label for="correo" class="block mb-2 text-sm font-bold text-gray-700">Correo</label>
         <input formControlName="correo" type="email" id="correo" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
       </div>
-      <!-- Campo para ingresar la edad del empleado -->
       <div>
         <label for="edad" class="block mb-2 text-sm font-bold text-gray-700">Edad</label>
         <input formControlName="edad" type="number" id="edad" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
       </div>
-      <!-- Campo para ingresar las horas trabajadas del empleado -->
       <div>
         <label for="horasTrabajadas" class="block mb-2 text-sm font-bold text-gray-700">Horas Trabajadas</label>
         <input formControlName="horasTrabajadas" type="number" id="horasTrabajadas" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500">
       </div>
     </div>
-    <!-- Botón para enviar el formulario y registrar al empleado -->
     <div class="flex justify-center">
       <button type="submit" class="mt-4 w-1/2 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 rounded">Registrar</button>
     </div>
   </form><br>
   
-  <!-- Título para la sección de edición de empleados -->
   <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Edicion Empleados</h2>
-  <!-- Sección para buscar y modificar un empleado existente -->
   <div class="mt-4 flex flex-col items-center bg-white shadow-md rounded-lg p-4">
     <input type="number" [(ngModel)]="matriculaBuscar" placeholder="Ingrese matrícula a modificar" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500" />
     <div class="flex justify-center w-full mt-4">
-      <!-- Botón para modificar el empleado buscado -->
       <button (click)="buscarYModificarEmpleado()" class="w-1/4 bg-green-500 hover:bg-green-700 text-white font-bold py-1 rounded mr-2">Modificar</button>
-      <!-- Botón para eliminar el empleado buscado -->
+    
       <button class="w-1/4 bg-red-500 hover:bg-red-700 text-white font-bold py-1 rounded">Eliminar</button>
     </div>
   </div><br>
 
-  <!-- Título para la sección de visualización de empleados -->
   <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Visualizacion Empleados</h2>
-  <!-- Botón para imprimir la lista de empleados -->
   <div class="mt-4 flex justify-center bg-white shadow-md rounded-lg p-4">
     <button class="mt-4 w-1/2 bg-blue-500 hover:bg-blue-500 text-white font-bold py-2 rounded" (click)="imprimirEmpleados()">Imprimir</button>
   </div>
 
-  <!-- Tabla para mostrar la lista de empleados -->
   <div class="mt-4">
     <table class="table-auto w-full bg-white shadow-md rounded-lg">
       <thead>
