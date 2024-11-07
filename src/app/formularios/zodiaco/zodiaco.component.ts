@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './zodiaco.component.html',
   styleUrls: ['./zodiaco.component.css']
 })
-export class ZodiacoComponent {
+export default class ZodiacoComponent {
   datosForm: FormGroup;
   signosZodiacales = [
     { signo: 'Rata', años: [1924, 1936, 1948, 1960, 1972, 1984, 1996, 2008, 2020] },

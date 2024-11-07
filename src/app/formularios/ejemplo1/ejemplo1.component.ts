@@ -13,7 +13,7 @@ interface Usuario{
   templateUrl: './ejemplo1.component.html',
   styleUrl: './ejemplo1.component.css'
 })
-export class Ejemplo1Component implements OnInit {
+export default class Ejemplo1Component implements OnInit {
 formGroup!: FormGroup;
 nombre:string='Jaz'
 persona:Usuario={

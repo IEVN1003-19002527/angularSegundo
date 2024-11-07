@@ -1,0 +1,80 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-extrabold mb-6 text-center">Calculadora de Resistencias</h1>
+
+  <form [formGroup]="resistenciaForm" class="bg-white shadow-lg rounded-lg p-8 mb-6">
+    <!-- Selección de la primera banda de color -->
+    <div class="form-group mb-6 flex space-x-4">
+      <div class="w-1/3">
+        <label for="color1" class="block text-gray-800 text-lg font-semibold mb-2">Primera Banda</label>
+        <select formControlName="color1" id="color1" class="form-select block w-full mt-1 border border-gray-300 rounded-md">
+          <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
+        </select>
+      </div>
+
+      <!-- Selección de la segunda banda de color -->
+      <div class="w-1/3">
+        <label for="color2" class="block text-gray-800 text-lg font-semibold mb-2">Segunda Banda</label>
+        <select formControlName="color2" id="color2" class="form-select block w-full mt-1 border border-gray-300 rounded-md">
+          <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
+        </select>
+      </div>
+
+      <!-- Selección de la tercera banda de color -->
+      <div class="w-1/3">
+        <label for="color3" class="block text-gray-800 text-lg font-semibold mb-2">Tercera Banda</label>
+        <select formControlName="color3" id="color3" class="form-select block w-full mt-1 border border-gray-300 rounded-md">
+          <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Selección de la tolerancia -->
+    <div class="form-group mb-6">
+      <label for ="tolerancia" class="block text-gray-800 text-lg font-semibold mb-2">Tolerancia</label>
+      <div class="flex items-center mb-2">
+        <input type="radio" formControlName="tolerancia" id="oro" value="oro" class="mr-2">
+        <label for="oro" class="text-gray-800">Oro</label>
+      </div>
+      <div class="flex items-center">
+        <input type="radio" formControlName="tolerancia" id="plata" value="plata" class="mr-2">
+        <label for="plata" class="text-gray-800">Plata</label>
+      </div>
+    </div>
+    <!-- Botón para registrar los valores -->
+    <button type="submit" (click)="registrar()" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
+      Registrar
+    </button>
+    <!-- Botón para imprimir los datos del local storage -->
+    <button type="button" (click)="imprimirDatos()" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
+      Imprimir
+    </button>
+  </form>
+
+  <!-- Resultados de Resistencia -->
+  <div>
+    <table class="min-w-full border-collapse border border-gray-300">
+      <thead>
+        <tr>
+          <th class="border border-gray-300 p-2">Color 1</th>
+          <th class="border border-gray-300 p-2">Color 2</th>
+          <th class="border border-gray-300 p-2">Color 3</th>
+          <th class="border border-gray-300 p-2">Tolerancia</th>
+          <th class="border border-gray-300 p-2">Valor</th>
+          <th class="border border-gray-300 p-2">Valor Máximo</th>
+          <th class="border border-gray-300 p-2">Valor Mínimo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultado of datosImpresos">
+          <td [ngStyle]="getColorStyle(resultado.color1Code)">{{ resultado.color1 }}</td>
+          <td [ngStyle]="getColorStyle(resultado.color2Code)">{{ resultado.color2 }}</td>
+          <td [ngStyle]="getColorStyle(resultado.color3Code)">{{ resultado.color3 }}</td>
+          <td [ngStyle]="getColorStyle(getToleranceColor(resultado.tolerancia))">{{ resultado.tolerancia }}</td>
+          <td>{{ resultado.valor }}</td>
+          <td>{{ resultado.valorMaximo }}</td>
+          <td>{{ resultado.valorMinimo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
